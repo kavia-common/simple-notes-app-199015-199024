@@ -1,104 +1,348 @@
-/* CSS Variables for Theme Management */
+/* Light theme (requested) */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  --primary: #3b82f6;
+  --success: #06b6d4;
+  --bg: #f9fafb;
+  --surface: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+
+  --shadow: 0 8px 20px rgba(17, 24, 39, 0.08);
+  --shadow-sm: 0 2px 8px rgba(17, 24, 39, 0.08);
+
+  --radius: 14px;
 }
 
-[data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
+* {
+  box-sizing: border-box;
 }
 
 .App {
-  text-align: center;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background: var(--bg);
+  color: var(--text);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Header */
+.AppHeader {
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.10), rgba(249, 250, 251, 0));
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.HeaderInner {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 28px 20px 18px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
-.App-header {
-  background-color: var(--bg-secondary);
-  min-height: 100vh;
+.HeaderTitleGroup {
+  min-width: 0;
+}
+
+.HeaderTitle {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+}
+
+.HeaderSubtitle {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.HeaderMeta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.Badge {
+  display: inline-flex;
+  align-items: center;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.12);
+  color: var(--text);
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Layout */
+.Main {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 18px 20px 40px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease;
-  position: relative;
+  gap: 16px;
 }
 
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
+.Section {
+  display: block;
 }
 
-.theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
+/* Cards */
+.Card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.CardHeader {
+  padding: 18px 18px 0;
+}
+
+.CardTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.CardSubtitle {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Form */
+.Form {
+  padding: 14px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.Field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.Label {
+  font-size: 13px;
   font-weight: 600;
+}
+
+.Required {
+  color: #ef4444;
+}
+
+.Input,
+.Textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: var(--text);
+  background: #ffffff;
+  outline: none;
+}
+
+.Input::placeholder,
+.Textarea::placeholder {
+  color: #9ca3af;
+}
+
+.Input:focus,
+.Textarea:focus {
+  border-color: rgba(59, 130, 246, 0.55);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+.InputError {
+  border-color: rgba(239, 68, 68, 0.7);
+}
+
+.FieldError {
+  color: #ef4444;
+  font-size: 12px;
+}
+
+.Hint {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.Actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 2px;
+}
+
+/* Buttons */
+.Btn {
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease,
+    border-color 120ms ease, opacity 120ms ease;
 }
 
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
+.Btn:active {
+  transform: translateY(1px);
 }
 
-.theme-toggle:active {
-  transform: translateY(0);
+.Btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.BtnPrimary {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 10px 18px rgba(59, 130, 246, 0.22);
+}
+
+.BtnPrimary:hover:not(:disabled) {
+  box-shadow: 0 12px 20px rgba(59, 130, 246, 0.28);
+}
+
+.BtnSuccess {
+  background: var(--success);
+  color: white;
+  box-shadow: 0 10px 18px rgba(6, 182, 212, 0.20);
+}
+
+.BtnSecondary {
+  background: #f3f4f6;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.BtnDanger {
+  background: #ef4444;
+  color: white;
+  box-shadow: 0 10px 18px rgba(239, 68, 68, 0.20);
+}
+
+.BtnGhost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+/* Notes list */
+.NotesSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.SectionHeader {
+  padding: 2px 2px 0;
+}
+
+.SectionTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.SectionSubtitle {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.NotesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.NoteCard {
+  padding: 16px 16px 14px;
+}
+
+.NoteTop {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.NoteTitle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  min-width: 0;
+}
+
+.NoteMeta {
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.NoteContent {
+  margin: 10px 0 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.Muted {
+  color: var(--muted);
+}
+
+.NoteActions {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Empty state */
+.EmptyState {
+  padding: 18px;
+  text-align: left;
+}
+
+/* Footer */
+.Footer {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 0 20px 24px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .HeaderInner {
+    flex-direction: column;
+    align-items: stretch;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
+  .HeaderMeta {
+    justify-content: space-between;
+  }
+
+  .Actions,
+  .NoteActions {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
